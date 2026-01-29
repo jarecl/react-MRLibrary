@@ -123,8 +123,8 @@ export default function EquipDetail() {
                                     </tr>
                                     <tr>
                                         <td colSpan={6} className="text-start">
-                                            <p className="my-1">Category: {equipInfo.category && equipInfo.category[2]}</p>
-                                            {equipInfo.attackSpeed && <p className="my-1">Attack Speed : {`${attkSpeedToText(equipInfo.attackSpeed)} (${equipInfo.attackSpeed})`}</p>}
+                                            <p className="my-1">类别: {equipInfo.category && equipInfo.category[2]}</p>
+                                            {equipInfo.attackSpeed && <p className="my-1">攻击速度 : {`${attkSpeedToText(equipInfo.attackSpeed)} (${equipInfo.attackSpeed})`}</p>}
                                             {Boolean(equipInfo.incSTR) && <p className="my-1">STR: {equipInfo.incSTR} ({rangeCalculator(equipInfo.incSTR)})</p>}
                                             {Boolean(equipInfo.incDEX) && <p className="my-1">DEX: {equipInfo.incDEX} ({rangeCalculator(equipInfo.incDEX)})</p>}
                                             {Boolean(equipInfo.incINT) && <p className="my-1">INT: {equipInfo.incINT} ({rangeCalculator(equipInfo.incINT)})</p>}
@@ -145,11 +145,11 @@ export default function EquipDetail() {
                                             {Boolean(equipInfo.incJump) && <p className="my-1">Jump: {equipInfo.incJump} ({rangeCalculator(equipInfo.incJump)})</p>}
 
 
-                                            <p>Number of Upgrades Available: {equipInfo.tuc || '-'}</p>
+                                            <p>可用升级次数: {equipInfo.tuc || '-'}</p>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colSpan={6}>Sell Price : {numFormatter(equipInfo.price)}</td>
+                                        <td colSpan={6}>出售价格 : {numFormatter(equipInfo.price)}</td>
                                     </tr>
                                 </tbody>
                             </Table>
@@ -163,19 +163,19 @@ export default function EquipDetail() {
                         <div className="item-dropped-by-card">
                             <Tabs id="controlled-tab-example" className="mb-3" >
                                 {/* Drops Tab */}
-                                <Tab eventKey="Drops" title="Drops">
+                                <Tab eventKey="Drops" title="掉落">
                                     {renderDroppedByMob(equipInfo)}
                                 </Tab>
 
                                 {/* Stats Tab */}
-                                <Tab eventKey="Stats" title="Stats">
+                                <Tab eventKey="Stats" title="属性">
                                     {renderEquipStats(equipInfo)}
                                 </Tab>
 
                                 {/* Gacha Tab only shows if have info from data_Gacha.json*/}
                                 {equipInfo.gacha &&
-                                    <Tab eventKey="Gacha" title="Gacha">
-                                        <h5>Gacha Location :</h5>
+                                    <Tab eventKey="Gacha" title="扭蛋">
+                                        <h5>扭蛋地点 :</h5>
                                         <ul>
                                             {equipInfo.gacha.map(mapName => <li key={mapName}>{mapName}</li>)}
                                         </ul>
@@ -184,12 +184,12 @@ export default function EquipDetail() {
 
                                 {/* Craft Tab only shows if have info from data_Crafting.json*/}
                                 {equipInfo.craft &&
-                                    <Tab eventKey="Craft" title="Craft">
+                                    <Tab eventKey="Craft" title="制作">
                                         <ul>
-                                            {equipInfo.craft.isCraftable && <li><p>Can be crafted</p></li>}
+                                            {equipInfo.craft.isCraftable && <li><p>可以制作</p></li>}
                                             {Boolean(equipInfo.craft.isMaterial.length) &&
                                                 <li>
-                                                    <p>As material for : </p>
+                                                    <p>作为材料用于 : </p>
                                                     <ol>
                                                         {equipInfo.craft.isMaterial.map(parentItemName => <li key={parentItemName} className="my-1">
                                                             {parentItemName}
@@ -197,7 +197,7 @@ export default function EquipDetail() {
                                                     </ol>
                                                 </li>}
                                         </ul>
-                                        <Link to={itemNameToCraftLink(equipInfo.name)} className="m-3">Click to see more</Link>
+                                        <Link to={itemNameToCraftLink(equipInfo.name)} className="m-3">点击查看更多</Link>
                                     </Tab>
                                 }
                             </Tabs>
@@ -214,7 +214,7 @@ export default function EquipDetail() {
 const renderDroppedByMob = (equipInfo) => {
     return (
         <>
-            {equipInfo?.droppedBy?.length >= 1 ? <span>Dropped by </span> : <span>Dropped by nothing.</span>}
+            {equipInfo?.droppedBy?.length >= 1 ? <span>掉落自 </span> : <span>无掉落来源。</span>}
             <p></p>
             {equipInfo?.droppedBy?.map(({ id, name }, i) => {
                 return (
@@ -237,11 +237,11 @@ const renderEquipStats = (equipInfo) => {
         <Table bordered hover className="text-center">
             <tbody>
                 <tr>
-                    <td>Name </td>
+                    <td>名称 </td>
                     <td dangerouslySetInnerHTML={{ __html: equipInfo.name }}></td>
                 </tr>
                 <tr>
-                    <td>item id </td>
+                    <td>装备 ID </td>
                     <td>{equipInfo.id} </td>
                 </tr>
                 {keys.map(k =>

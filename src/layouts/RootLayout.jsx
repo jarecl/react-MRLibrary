@@ -35,65 +35,65 @@ export default function RootLayout() {
             <Navbar.Collapse id="responsive-navbar-nav">
 
               <Nav className="me-auto">
-                <NavDropdown title="Equips" id="collapsible-nav-dropdown">
+                <NavDropdown title="装备" id="collapsible-nav-dropdown">
                   <LinkContainer to="/weapon">
-                    <NavDropdown.Item>Weapon</NavDropdown.Item>
+                    <NavDropdown.Item>武器</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/hat">
-                    <NavDropdown.Item>Hat</NavDropdown.Item>
+                    <NavDropdown.Item>帽子</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/top">
-                    <NavDropdown.Item>Top</NavDropdown.Item>
+                    <NavDropdown.Item>上装</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/bottom">
-                    <NavDropdown.Item>Bottom</NavDropdown.Item>
+                    <NavDropdown.Item>下装</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/overall">
-                    <NavDropdown.Item>Overall</NavDropdown.Item>
+                    <NavDropdown.Item>套装</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Divider />
                   <LinkContainer to="/shoes">
-                    <NavDropdown.Item>Shoes</NavDropdown.Item>
+                    <NavDropdown.Item>鞋子</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/gloves">
-                    <NavDropdown.Item>Gloves</NavDropdown.Item>
+                    <NavDropdown.Item>手套</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/cape">
-                    <NavDropdown.Item>Cape</NavDropdown.Item>
+                    <NavDropdown.Item>披风</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/shield">
-                    <NavDropdown.Item>Shield</NavDropdown.Item>
+                    <NavDropdown.Item>盾牌</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/faceacc">
-                    <NavDropdown.Item>Face Acc</NavDropdown.Item>
+                    <NavDropdown.Item>脸部装饰</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Divider />
                   <LinkContainer to="/eyeacc">
-                    <NavDropdown.Item>Eye Acc</NavDropdown.Item>
+                    <NavDropdown.Item>眼部装饰</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/earring">
-                    <NavDropdown.Item>Earrings</NavDropdown.Item>
+                    <NavDropdown.Item>耳环</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/ring">
-                    <NavDropdown.Item>Ring</NavDropdown.Item>
+                    <NavDropdown.Item>戒指</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/pendant">
-                    <NavDropdown.Item>Pendant</NavDropdown.Item>
+                    <NavDropdown.Item>吊坠</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/belt">
-                    <NavDropdown.Item>Belt</NavDropdown.Item>
+                    <NavDropdown.Item>腰带</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Divider />
                   <LinkContainer to="/medal">
-                    <NavDropdown.Item>Medal</NavDropdown.Item>
+                    <NavDropdown.Item>勋章</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/shoulder">
-                    <NavDropdown.Item>Shoulder</NavDropdown.Item>
+                    <NavDropdown.Item>肩饰</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
 
                 <LinkContainer to="/monster">
-                  <Nav.Link>Monster</Nav.Link>
+                  <Nav.Link>怪物</Nav.Link>
                 </LinkContainer>
 
                 {/* <LinkContainer to="/map">
@@ -101,96 +101,74 @@ export default function RootLayout() {
                 </LinkContainer> */}
 
                 {/* Items Tab */}
-                <NavDropdown title="Items" id="collapsible-nav-dropdown">
+                <NavDropdown title="物品" id="collapsible-nav-dropdown">
                   <LinkContainer to="/use">
-                    <NavDropdown.Item>Use</NavDropdown.Item>
+                    <NavDropdown.Item>消耗品</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/setup">
-                    <NavDropdown.Item>Setup</NavDropdown.Item>
+                    <NavDropdown.Item>设置</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/etc">
-                    <NavDropdown.Item>Etc</NavDropdown.Item>
+                    <NavDropdown.Item>其他</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/gacha">
-                    <NavDropdown.Item>Gacha</NavDropdown.Item>
+                    <NavDropdown.Item>扭蛋</NavDropdown.Item>
                   </LinkContainer>
                   {/* <LinkContainer to="/cash">
                     <NavDropdown.Item>Cash</NavDropdown.Item>
                   </LinkContainer> */}
                 </NavDropdown>
 
-                <LinkContainer to="/skill">
-                  <Nav.Link>Skill</Nav.Link>
-                </LinkContainer>
-
                 {/* Tools */}
-                <NavDropdown title="Tools" id="collapsible-nav-dropdown">
+                <NavDropdown title="工具" id="collapsible-nav-dropdown">
                   <LinkContainer to="/exptable">
-                    <NavDropdown.Item>Exp Table</NavDropdown.Item>
+                    <NavDropdown.Item>经验表</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/elemental-table">
-                    <NavDropdown.Item>Elemental Table</NavDropdown.Item>
+                    <NavDropdown.Item>属性相克表</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/union-search">
-                    <NavDropdown.Item>Union Search</NavDropdown.Item>
+                    <NavDropdown.Item>联合搜索</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/craft-table">
-                    <NavDropdown.Item>Craft Table</NavDropdown.Item>
+                    <NavDropdown.Item>制作表</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/gpq-solver">
-                    <NavDropdown.Item>GPQ solver</NavDropdown.Item>
+                    <NavDropdown.Item>GPQ解谜</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Divider />
                   <LinkContainer to="/opq-solver">
-                    <NavDropdown.Item>OPQ solver</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to="/questline">
-                    <NavDropdown.Item>Questline</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to="/music">
-                    <NavDropdown.Item>Music</NavDropdown.Item>
+                    <NavDropdown.Item>OPQ解谜</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/accuracy-calc">
-                    <NavDropdown.Item>Accuracy Calc</NavDropdown.Item>
+                    <NavDropdown.Item>命中率计算</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/worldmap">
-                    <NavDropdown.Item>WorldMap</NavDropdown.Item>
+                    <NavDropdown.Item>世界地图</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
 
-                <LinkContainer to="/npc">
-                  <Nav.Link>NPC</Nav.Link>
-                </LinkContainer>
-
-                <LinkContainer to="/quest">
-                  <Nav.Link>Quest</Nav.Link>
-                </LinkContainer>
-
-                <LinkContainer to="/map">
-                  <Nav.Link>Map</Nav.Link>
-                </LinkContainer>
-
                 {/* Links */}
-                <NavDropdown title="Links" id="collapsible-nav-dropdown">
-                  
+                <NavDropdown title="链接" id="collapsible-nav-dropdown">
+
                   <LinkContainer to="/api/v1">
-                    <NavDropdown.Item>API documentation</NavDropdown.Item>
+                    <NavDropdown.Item>API文档</NavDropdown.Item>
                   </LinkContainer>
 
                   <Link to='https://royals-droppy.netlify.app/' target="_blank" >
-                    <p className="m-0 p-0 mx-3"> old droptracker</p>
+                    <p className="m-0 p-0 mx-3"> 旧版掉落追踪</p>
                   </Link>
 
                   <Link to='https://royals-droppy-v2-pc.netlify.app/' target="_blank" >
-                    <p className="m-0 p-0 mx-3"> droptracker v2</p>
+                    <p className="m-0 p-0 mx-3"> 掉落追踪 v2</p>
                   </Link>
 
                   <Link to='https://royals-droppy-v2-mobile.netlify.app/' target="_blank" >
-                    <p className="m-0 p-0 mx-3"> droptracker v2-m</p>
+                    <p className="m-0 p-0 mx-3"> 掉落追踪 v2-手机版</p>
                   </Link>
 
                   <LinkContainer to="/about-me">
-                    <NavDropdown.Item>About Me</NavDropdown.Item>
+                    <NavDropdown.Item>关于</NavDropdown.Item>
                   </LinkContainer>
 
                 </NavDropdown>
@@ -201,14 +179,14 @@ export default function RootLayout() {
                   <FormBS.Control
                     id="globalInput"
                     type="search"
-                    placeholder="Global search ..."
+                    placeholder="全局搜索..."
                     className="me-1"
                     aria-label="Search"
                     data-bs-theme="light"
                     name="searchName"
                     defaultValue=""
                   />
-                  <Button variant="secondary" type="submit">Submit</Button>
+                  <Button variant="secondary" type="submit">搜索</Button>
                 </Form>
               </Nav>
 

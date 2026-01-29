@@ -30,12 +30,12 @@ export default function Setup() {
                     <FormBS.Control
                         className="me-3"
                         type="search"
-                        placeholder=" Search ..."
+                        placeholder=" 搜索 ..."
                         aria-label="Search"
                         data-bs-theme="light"
                         name="searchName"
                     />
-                    <Button variant="secondary" type="submit" className="w-50">Search</Button>
+                    <Button variant="secondary" type="submit" className="w-50">搜索</Button>
                 </div>
 
             </Form>
@@ -46,9 +46,9 @@ export default function Setup() {
             <Table className="mt-3 table-sm text-center">
                 <thead>
                     <tr>
-                        <th>Image</th>
-                        <th className="w-25">Name</th>
-                        <th>Description</th>
+                        <th>图片</th>
+                        <th className="w-25">名称</th>
+                        <th>描述</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -141,7 +141,7 @@ export default function UnionSearch() {
                         {/* Input - Text */}
                         <FormBS.Control
                             type="search"
-                            placeholder=" Add new item ..."
+                            placeholder=" 添加新物品 ..."
                             aria-label="Search"
                             data-bs-theme="light"
                             name="searchTextInput"
@@ -164,7 +164,7 @@ export default function UnionSearch() {
                         </div>
                     </div>
 
-                    <Button variant="secondary" type="submit" className="w-25">Search</Button>
+                    <Button variant="secondary" type="submit" className="w-25">搜索</Button>
                 </div>
 
             </Form>
@@ -300,7 +300,7 @@ const renderItemCards = (selectedItems, itemLibrary, handleCardChange) => {
                 // style={{ height: '50px', width: '50px', fontSize: "0.7rem" }}
                 style={{ height: '75px', width: '75px' }}
                 onClick={e => handleCardChange('clear-all', '')}>
-                Clear All
+                清空全部
             </Button>}
 
             {/* each card */}

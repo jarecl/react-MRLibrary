@@ -235,7 +235,7 @@ const InteractiveWorldMap = ({ worldMapName, data, mapIdToMobList }) => {
                     {Array.from(mapIdToMobList[tooltip.mapId]).sort(sortById).map(mobId =>
                         <div key={tooltip.mapId + "-" + mobId} className="d-flex gap-2 align-items-center mb-1">
                             <div className="d-flex align-items-center" style={{ maxWidth: '50px', maxHeight: '50px' }}>{renderImageWithMobId(mobId)}</div>
-                            <p>Lv: {data_mobStats[mobId].level}</p>
+                            <p>等级: {data_mobStats[mobId].level}</p>
                         </div>
                     )}
                 </div>

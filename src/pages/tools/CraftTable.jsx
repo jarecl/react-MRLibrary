@@ -7,12 +7,51 @@ import Table from "react-bootstrap/Table"
 import Image from "react-bootstrap/Image"
 // 
 import { updatePagination } from "../../components/Pagination.jsx"
-import { renderImageWithNPCId } from "../npc/utility.jsx"
 import { updateSearchResultCount } from "./utility.jsx"
 import { renderImageWithItemIdType } from "../all/utility.jsx"
 import { itemIdToNavUrl } from '../monster/utility.jsx'
 
 import data_Eqp from "../../../data/data_Eqp.json"
+import data_NPC from "../../../data/data_NPC.json"
+
+// Helper function to render NPC image
+const renderImageWithNPCId = (npcId) => {
+    if (!npcId) return null
+
+    const handleError = (e) => {
+        const fileName = `${npcId.toString().padStart(7, 0)}.png`
+        const img = e.target
+
+        if (img.getAttribute("myimgindex") === '0') {
+            img.setAttribute("myimgindex", "1")
+            img.src = `\\images\\npc\\${fileName}`
+            return
+        }
+        if (img.getAttribute("myimgindex") === '1') {
+            img.setAttribute("myimgindex", "2")
+            img.src = `https://maplelegends.com/static/images/lib/npc/${fileName}`
+            return
+        }
+        if (img.getAttribute("myimgindex") === '2') {
+            img.setAttribute("myimgindex", "3")
+            img.src = `https://maplestory.io/api/SEA/198/npc/${npcId}/icon?resize=1.0`
+            return
+        }
+        if (img.getAttribute("myimgindex") === '3') {
+            img.setAttribute("myimgindex", "4")
+            img.src = "/error"
+            return
+        }
+    }
+
+    return <Image
+        myimgindex="0"
+        src={`...`}
+        id={`image-${npcId}`}
+        fluid
+        alt="NPC Image"
+        onError={handleError} />
+}
 import data_Consume from "../../../data/data_Consume.json"
 import data_Ins from "../../../data/data_Ins.json"
 import data_Etc from "../../../data/data_Etc.json"
@@ -63,12 +102,12 @@ export default function CraftTable() {
                     <FormBS.Control
                         className="me-3"
                         type="search"
-                        placeholder=" Search ..."
+                        placeholder=" 搜索 ..."
                         aria-label="Search"
                         data-bs-theme="light"
                         name="searchName"
                     />
-                    <Button variant="secondary" type="submit" className="w-50">Search</Button>
+                    <Button variant="secondary" type="submit" className="w-50">搜索</Button>
                 </div>
 
             </Form>
@@ -80,8 +119,8 @@ export default function CraftTable() {
             <Table className="mt-3 table-sm text-center">
                 <thead>
                     <tr>
-                        <th>Item</th>
-                        <th>Materials</th>
+                        <th>物品</th>
+                        <th>材料</th>
                         <th className="w-25">NPC</th>
                     </tr>
                 </thead>

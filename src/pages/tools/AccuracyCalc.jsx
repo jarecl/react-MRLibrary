@@ -8,7 +8,26 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 // 
 import { updatePagination } from "../../components/Pagination.jsx"
 import { renderImageWithMobId, filterMobList, updateSearchResultCount, generateMobLibrary } from "../monster/utility.jsx"
-import { mapCategory } from "../map/utility.jsx"
+
+// Map categories for filtering
+const mapCategory = [
+    "Maple Island",
+    "Victoria Island",
+    "Elnath",
+    "Aquaroad",
+    "Ludus Lake",
+    "Ellin Forest",
+    "Leafre",
+    "Neo Tokyo",
+    "Mu Lung",
+    "Nihal Desert",
+    "Masteria",
+    "Temple of Time",
+    "Singapore",
+    "Malaysia",
+    "Event",
+    "Etc"
+]
 
 export default function AccuracyCalc() {
     const [searchParams] = useSearchParams()
@@ -145,7 +164,7 @@ export default function AccuracyCalc() {
             </div>
 
             {/* Magic Accuracy for mage */}
-            {playerStats.isMage && <p className="w-100 text-end">Magic Accuracy : {magicAcc}</p>}
+            {playerStats.isMage && <p className="w-100 text-end">魔法准确度 : {magicAcc}</p>}
 
             <hr />
 
@@ -199,13 +218,13 @@ export default function AccuracyCalc() {
                         </Table>
                     </div>
 
-                    <div className="col-12 flex-grow-1 d-md-none px-2"><Button onClick={handleAdvancedSearchClick} className="w-100" variant="secondary">Advanced Search</Button></div>
+                    <div className="col-12 flex-grow-1 d-md-none px-2"><Button onClick={handleAdvancedSearchClick} className="w-100" variant="secondary">高级搜索</Button></div>
 
                     <div className="col-lg-6 flex-grow-1">
                         <Table className="text-center my-0" borderless >
                             <thead>
                                 <tr className="d-none d-lg-block">
-                                    <th className="bg-transparent w-100">Name</th>
+                                    <th className="bg-transparent w-100">名称</th>
                                     <th className="bg-transparent"> </th>
                                 </tr>
                             </thead>
@@ -215,13 +234,13 @@ export default function AccuracyCalc() {
                                         <FormBS.Control
                                             className=""
                                             type="search"
-                                            placeholder=" Search ..."
+                                            placeholder=" 搜索 ..."
                                             aria-label="Search"
                                             data-bs-theme="light"
                                             name="searchName"
                                         />
                                     </td>
-                                    <td className="bg-transparent"><Button variant="secondary" type="submit" className="w-100" >Search</Button></td>
+                                    <td className="bg-transparent"><Button variant="secondary" type="submit" className="w-100" >搜索</Button></td>
                                 </tr>
                             </tbody>
                         </Table>
@@ -235,18 +254,18 @@ export default function AccuracyCalc() {
             <Table className="mt-3">
                 <thead>
                     <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Level</th>
+                        <th>图片</th>
+                        <th>名称</th>
+                        <th>等级</th>
 
                         {/* Physical  Accuracy*/}
-                        {!playerStats.isMage && <th>Hit rate (mrsoupman's)</th>}
-                        {!playerStats.isMage && <th>Hit rate (ayumilove's)</th>}
-                        {!playerStats.isMage && <th>Accuracy for (100%)</th>}
+                        {!playerStats.isMage && <th>命中率 (mrsoupman's)</th>}
+                        {!playerStats.isMage && <th>命中率 (ayumilove's)</th>}
+                        {!playerStats.isMage && <th>100% 命中所需准确度</th>}
 
                         {/* Magic  Accuracy*/}
-                        {playerStats.isMage && <th>Hit rate (ayumilove's)</th>}
-                        {playerStats.isMage && <th>Accuracy for (100%)</th>}
+                        {playerStats.isMage && <th>命中率 (ayumilove's)</th>}
+                        {playerStats.isMage && <th>100% 命中所需准确度</th>}
                     </tr>
                 </thead>
                 <tbody>

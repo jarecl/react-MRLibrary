@@ -11,9 +11,9 @@ export default function ExpTable() {
             <Table striped className='text-center'>
                 <tbody>
                     <tr>
-                        <th>Level</th>
-                        <th>Exp to level up</th>
-                        <th>Accumulated Exp</th>
+                        <th>等级</th>
+                        <th>升级所需经验</th>
+                        <th>累计经验</th>
                     </tr>
                     {data_ExpTable.map(x => {
                         return (

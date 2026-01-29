@@ -9,9 +9,55 @@ import { updatePagination } from "../../components/Pagination.jsx"
 import { renderImageWithMobId } from "../monster/utility.jsx"
 
 import { filterMobElementalList, updateSearchResultCount } from "./utility.jsx"
-import { mapCategory, findMapCategoryByMapId } from "../map/utility.jsx"
 
 import data_mob from "../../../data/data_Mob.json"
+import data_Map from "../../../data/data_Map.json"
+
+// Map categories for filtering
+const mapCategory = [
+    "Maple Island",
+    "Victoria Island",
+    "Elnath",
+    "Aquaroad",
+    "Ludus Lake",
+    "Ellin Forest",
+    "Leafre",
+    "Neo Tokyo",
+    "Mu Lung",
+    "Nihal Desert",
+    "Masteria",
+    "Temple of Time",
+    "Singapore",
+    "Malaysia",
+    "Event",
+    "Etc"
+]
+
+// Helper function to find map category by map ID
+const findMapCategoryByMapId = (mapId) => {
+    const mapData = data_Map[mapId]
+    if (!mapData) return "Unknown"
+    const categoryMap = {
+        "maple": "Maple Island",
+        "victoria": "Victoria Island",
+        "elnath": "Elnath",
+        "aquaroad": "Aquaroad",
+        "ludus": "Ludus Lake",
+        "ellin": "Ellin Forest",
+        "leafre": "Leafre",
+        "neotokyo": "Neo Tokyo",
+        "mulung": "Mu Lung",
+        "nihal": "Nihal Desert",
+        "masteria": "Masteria",
+        "time": "Temple of Time",
+        "singapore": "Singapore",
+        "malaysia": "Malaysia",
+        "event": "Event",
+        "etc": "Etc"
+    }
+    const category = mapData.mapCategory || "etc"
+    return categoryMap[category] || category
+}
 import data_mobStats from "../../../data/data_MobStats.json"
 import data_MapMobCount from "../../../data/data_MapMobCount.json"
 import data_MB_Maps from "../../../data/data_MB_Maps.json"
@@ -139,13 +185,13 @@ export default function ElementalTable() {
                         </Table>
                     </div>
 
-                    <div className="col-12 flex-grow-1 d-md-none px-2"><Button onClick={handleAdvancedSearchClick} className="w-100" variant="secondary">Advanced Search</Button></div>
+                    <div className="col-12 flex-grow-1 d-md-none px-2"><Button onClick={handleAdvancedSearchClick} className="w-100" variant="secondary">高级搜索</Button></div>
 
                     <div className="col-lg-6 flex-grow-1">
                         <Table className="text-center my-0" borderless >
                             <thead>
                                 <tr className="d-none d-lg-block">
-                                    <th className="bg-transparent w-100">Name</th>
+                                    <th className="bg-transparent w-100">名称</th>
                                     <th className="bg-transparent"> </th>
                                 </tr>
                             </thead>
@@ -155,13 +201,13 @@ export default function ElementalTable() {
                                         <FormBS.Control
                                             className=""
                                             type="search"
-                                            placeholder=" Search ..."
+                                            placeholder=" 搜索 ..."
                                             aria-label="Search"
                                             data-bs-theme="light"
                                             name="searchName"
                                         />
                                     </td>
-                                    <td className="bg-transparent"><Button variant="secondary" type="submit" className="w-100" >Search</Button></td>
+                                    <td className="bg-transparent"><Button variant="secondary" type="submit" className="w-100" >搜索</Button></td>
                                 </tr>
                             </tbody>
                         </Table>
@@ -175,15 +221,15 @@ export default function ElementalTable() {
             <Table className="mt-3">
                 <thead className="sticky-top text-center z-2">
                     <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Level</th>
-                        <th> <p>Undead</p> <img src='/images/elemental_table/undead.png'></img>             </th>
-                        <th> <p>Holy</p> <img src='/images/elemental_table/holy.png'></img>             </th>
-                        <th> <p>Fire</p> <img src='/images/elemental_table/fire.png'></img>             </th>
-                        <th> <p>Ice</p> <img src='/images/elemental_table/ice.png'></img>               </th>
-                        <th> <p>Lightning</p> <img src='/images/elemental_table/lightning.png'></img>   </th>
-                        <th> <p>Poison</p> <img src='/images/elemental_table/poison.png'></img>         </th>
+                        <th>图片</th>
+                        <th>名称</th>
+                        <th>等级</th>
+                        <th> <p>不死</p> <img src='/images/elemental_table/undead.png'></img>             </th>
+                        <th> <p>圣</p> <img src='/images/elemental_table/holy.png'></img>             </th>
+                        <th> <p>火</p> <img src='/images/elemental_table/fire.png'></img>             </th>
+                        <th> <p>冰</p> <img src='/images/elemental_table/ice.png'></img>               </th>
+                        <th> <p>雷</p> <img src='/images/elemental_table/lightning.png'></img>   </th>
+                        <th> <p>毒</p> <img src='/images/elemental_table/poison.png'></img>         </th>
                     </tr>
                 </thead>
                 <tbody>

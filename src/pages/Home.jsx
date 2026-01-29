@@ -52,25 +52,23 @@ export default function Home() {
     return (
         <div className="home text-center">
             {/* Announcement title */}
-            <a href="https://royals.ms/forum/threads/un-official-mapleroyals-library-scottys-version.229606/page-6#post-1530878" target="_blank">
-                <h2 className="text-danger">Important Announcement : Use it at your own risk!</h2>
-            </a>
+            
 
-            <h2 className="display-6">Welcome to </h2>
+            <h2 className="display-6">欢迎来到</h2>
 
-            <h2 className="display-5 my-3 p-0">MapleRoyals Library (Un-official)</h2>
-            <h5 className="my-3 p-0"> Game version : v96.2 </h5>
+            <h2 className="display-5 my-3 p-0">MapleRoyals 档案库</h2>
+            <h5 className="my-3 p-0"> 游戏版本：v96.2 </h5>
 
             <Form className="d-flex m-5 p-3" method="post" action="/all">
                 <FormBS.Control
                     className="p-1 me-3"
                     type="search"
-                    placeholder="Global search ..."
+                    placeholder="全局搜索..."
                     aria-label="Search"
                     data-bs-theme="light"
                     name="searchName"
                 />
-                <Button className="w-50" variant="secondary" type="submit">Submit</Button>
+                <Button className="w-50" variant="secondary" type="submit">搜索</Button>
             </Form>
 
 

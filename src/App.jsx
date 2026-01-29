@@ -18,8 +18,6 @@ import Etc, { etcAction } from './pages/items/Etc.jsx'
 import Gacha, { gachaAction } from './pages/items/Gacha.jsx'
 import ItemDetail from './pages/items/ItemDetail.jsx'
 
-import Skill, { skillAction } from './pages/skill/Skill.jsx'
-import SkillDetail from './pages/skill/SkillDetail.jsx'
 
 import All, { globalSearchAction } from './pages/all/All.jsx'
 
@@ -29,18 +27,8 @@ import UnionSearch, { unionSearchAction } from './pages/tools/UnionSearch.jsx'
 import CraftTable, { craftTableAction } from './pages/tools/CraftTable.jsx'
 import GPQSolver from './pages/tools/GPQSolver.jsx'
 import { OPQSolver, OPQSimulator } from './pages/tools/OPQSolver.jsx'
-import QuestLine from './pages/tools/Questline.jsx'
-import Music from './pages/tools/Music.jsx'
 import AccuracyCalc, { accuracyAction } from './pages/tools/AccuracyCalc.jsx'
 import WorldMap from './pages/tools/WorldMap.jsx'
-
-import NPC, { npcAction } from './pages/npc/NPC.jsx'
-
-import Quest, { questAction } from './pages/quest/Quest.jsx'
-import QuestDetail from './pages/quest/QuestDetail.jsx'
-
-import Map, { mapAction } from './pages/map/Map.jsx'
-import MapDetail from './pages/map/MapDetail.jsx'
 
 import NotFound from './pages/NotFound.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
@@ -95,13 +83,6 @@ const router = createBrowserRouter(
         </Route >
         {/* Items */}
 
-        {/* Skill */}
-        <Route path="skill" action={skillAction}>
-          <Route index element={< Skill />}></Route>
-          <Route path=":skillId" element={< SkillDetail />}></Route>
-        </Route >
-
-
         {/* Tools */}
         <Route path="exptable" element={< ExpTable />} />
 
@@ -117,31 +98,9 @@ const router = createBrowserRouter(
 
         <Route path="opq-simulator" element={< OPQSimulator />} />
 
-        <Route path="questline">
-          <Route index element={< QuestLine />}></Route>
-          <Route path=":questId" element={< QuestLine />}></Route>
-        </Route >
-
-        <Route path="music" element={< Music />} />
-
         <Route path="accuracy-calc" element={< AccuracyCalc />} action={accuracyAction} />
         <Route path="worldmap" element={< WorldMap />} />
 
-
-        {/* NPC */}
-        <Route path="npc" element={< NPC />} action={npcAction}></Route >
-
-        {/* Quest */}
-        <Route path="quest" action={questAction}>
-          <Route index element={< Quest />}></Route>
-          <Route path=":questId" element={< QuestDetail />}></Route>
-        </Route >
-
-        {/* Map */}
-        <Route path="map" action={mapAction}>
-          <Route index element={< Map />}></Route>
-          <Route path=":mapId" element={< MapDetail />}></Route>
-        </Route >
 
         {/* Links */}
         <Route path="about-me" element={< AboutMe />} />

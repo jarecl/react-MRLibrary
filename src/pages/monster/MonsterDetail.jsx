@@ -1,8 +1,9 @@
 import { useParams, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-// 
+//
 import data_Mob from "../../../data/data_Mob.json"
-// 
+import data_Map from "../../../data/data_Map.json"
+//
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -11,7 +12,7 @@ import Tabs from "react-bootstrap/Tabs"
 import Tab from "react-bootstrap/Tab"
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-// 
+//
 import {
     generateMobInfo,
     decodeElemAttr,
@@ -21,7 +22,19 @@ import {
     itemIdToNavUrl,
 } from "./utility.jsx"
 
-import { convertMapIdToUrl, convertMapIdToName } from '../map/utility.jsx'
+// Helper function to get map display name
+const getMapDisplayName = (mapId, mapObj) => {
+    if (mapObj && mapObj.streetName && mapObj.mapName) {
+        return `${mapObj.streetName} - ${mapObj.mapName}`
+    }
+    // Fallback to data_Map if mapObj is not available
+    const mapData = data_Map[mapId]
+    if (mapData) {
+        return `${mapData.streetName} - ${mapData.mapName}`
+    }
+    return `Map ID: ${mapId}`
+}
+
 
 export default function MonsterDetail() {
 
@@ -112,17 +125,17 @@ export default function MonsterDetail() {
                                 className="mb-3"
                             >
                                 {/* Drops Tab */}
-                                <Tab eventKey="Drops" title="Drops">
+                                <Tab eventKey="Drops" title="掉落">
                                     {renderSortedDrops(sortDropsToFourArr(mobInfo.drops))}
                                 </Tab>
 
                                 {/* Locations Tab */}
-                                <Tab eventKey="Locations" title="Locations">
+                                <Tab eventKey="Locations" title="位置">
                                     {renderTableOfMap(mobInfo.spawnMap)}
                                 </Tab>
 
                                 {/* Stats Tab */}
-                                <Tab eventKey="Stats" title="Stats">
+                                <Tab eventKey="Stats" title="属性">
                                     {renderMobStats(mobInfo)}
                                 </Tab>
 
@@ -138,53 +151,30 @@ export default function MonsterDetail() {
 }
 
 const renderTableOfMap = (mapArr) => {
-
-    const [hasAlerted, setHasAlerted] = useState(false)
-
     const sortedMapArr = mapArr && mapArr.slice().sort((a, b) => {
         if (b[2] !== a[2]) return b[2] - a[2] // descendingly sorted in Count
-        // if a[1] or b[1] is empty obj
-        if (a[1] === undefined) return 1
-        if (b[1] === undefined) return 0
-
-        return b[1].streetName > a[1].streetName ? 1 : -1 // descendingly sorted in alphabet order if same count
+        return 0
     })
-
-    const handleMapLinkClick = (hasHiddenStreetUrl) => {
-        if (hasHiddenStreetUrl) return
-        if (hasAlerted) return
-        setHasAlerted(true)
-        alert('You are being redirected to mapleLegends library. Come back later. Be aware that both site look similar but different mob drops.')
-    }
 
     return (
         <Table bordered hover className="text-center">
             <tbody >
                 <tr>
-                    <th className="bg-transparent">Map</th>
-                    <th className="bg-transparent">Count</th>
+                    <th className="bg-transparent">地图</th>
+                    <th className="bg-transparent">数量</th>
                 </tr>
-                {sortedMapArr && sortedMapArr.map((map, i) => <MapRowCard key={i} map={map} handleMapLinkClick={handleMapLinkClick} />)}
+                {sortedMapArr && sortedMapArr.map((map, i) => <MapRowCard key={i} map={map} />)}
             </tbody>
         </Table>
     )
 }
 
-const MapRowCard = ({ map, handleMapLinkClick }) => {
-    //  {mapCategory: __ , mapName: __, streetName: ___}
+const MapRowCard = ({ map }) => {
     const [mapId, mapObj, mobCount] = [...map]
-    const { streetName } = { ...mapObj }
-
+    const mapDisplayName = getMapDisplayName(mapId, mapObj)
     return (
         <tr key={mapId}>
-            <td className="bg-transparent">
-                {streetName
-                    ? <Link to={convertMapIdToUrl(mapId)}>
-                        {convertMapIdToName(mapId)}
-                    </Link>
-                    : <p>`map info missing. map_id : ${mapId}`</p>
-                }
-            </td>
+            <td className="bg-transparent">{mapDisplayName}</td>
             <td className="bg-transparent">{mobCount}</td>
         </tr>
     )
@@ -195,19 +185,19 @@ const renderSortedDrops = ({ EquipDrops, UseDrops, SetupDrops, EtcDrops, result 
 
     return (
         <>
-            <h6>Equip</h6>
+            <h6>装备</h6>
             <div>
                 {EquipDrops.map(x => dropsOverlayWrapper(x))}
             </div>
-            <h6>Use</h6>
+            <h6>消耗品</h6>
             <div>
                 {UseDrops.map(x => dropsOverlayWrapper(x))}
             </div>
-            <h6>Setup</h6>
+            <h6>设置</h6>
             <div>
                 {SetupDrops.map(x => dropsOverlayWrapper(x))}
             </div>
-            <h6>Etc</h6>
+            <h6>其他</h6>
             <div>
                 {EtcDrops.map(x => dropsOverlayWrapper(x))}
             </div>
@@ -246,11 +236,11 @@ const renderMobStats = (mobInfo) => {
         <Table bordered hover className="text-center">
             <tbody>
                 <tr>
-                    <td>Name </td>
+                    <td>名称 </td>
                     <td dangerouslySetInnerHTML={{ __html: mobInfo.name }}></td>
                 </tr>
                 <tr>
-                    <td>Mob id </td>
+                    <td>怪物ID </td>
                     <td>{mobInfo.id} </td>
                 </tr>
                 {keys.map(k =>

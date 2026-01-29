@@ -58,7 +58,7 @@ export default function GPQSolver() {
     return (
         <div className="d-flex flex-column p-3">
             <div className="instruction">
-                <h4>Instructions</h4>
+                <h4>说明</h4>
                 <ul>
                     <li>
                         <b>S</b> = <img src='/images/items/04001028.png'></img> Scroll
@@ -74,13 +74,13 @@ export default function GPQSolver() {
                     </li>
                 </ul>
 
-                <h4>Feedback</h4>
-                <p>Start with "MSMS", click and read info from npc, then submit the feedback here, you will see next guess prepared for you.</p>
+                <h4>反馈</h4>
+                <p>从 "MSMS" 开始，点击并阅读 NPC 信息，然后在此提交反馈，您将看到下一个猜测。</p>
 
                 {/* Example */}
                 <Accordion defaultActiveKey="null">
                     <Accordion.Item eventKey="0">
-                        <Accordion.Header>E.g.</Accordion.Header>
+                        <Accordion.Header>示例</Accordion.Header>
                         <Accordion.Body>
                             <p className="m-0 ms-3"><span className="fw-bolder"> 1 </span> agreed the offering is <span className="fw-bolder"> correct </span> </p>
                             <p className="m-0 ms-3"><span className="fw-bolder"> 1 </span>  have declared the offering is <span className="fw-bolder"> incorrect </span> </p>
@@ -94,7 +94,7 @@ export default function GPQSolver() {
             <hr></hr>
 
             <div className="next-guess">
-                <h4>Next guess:</h4>
+                <h4>下一个猜测:</h4>
                 <Table striped bordered className="w-25 mx-auto">
                     <tbody>
                         <tr>
@@ -106,7 +106,7 @@ export default function GPQSolver() {
                         <tr>
                             {/* render the next guess dynamically, icon + legend */}
                             {nextGuess === ''
-                                ? <td colSpan={4} className="text-center text-bg-danger">Oopps, no more remaining, please reset solver and in-game puzzle.</td>
+                                ? <td colSpan={4} className="text-center text-bg-danger">哎呀，没有更多选项了，请重置求解器和游戏内谜题。</td>
                                 : nextGuess.split('').map((char, i) =>
                                     <td className="text-center fw-bolder" key={char + i}>
                                         {generateItemImgTag(char)}
@@ -123,9 +123,9 @@ export default function GPQSolver() {
             <Table className="w-75 mx-auto">
                 <thead className="text-center">
                     <tr>
-                        <th> Correct </th>
-                        <th> Incorrect </th>
-                        <th> Unknown </th>
+                        <th> 正确 </th>
+                        <th> 错误 </th>
+                        <th> 未知 </th>
                         <th> {/* filler */} </th>
                     </tr>
                 </thead>
@@ -156,19 +156,19 @@ export default function GPQSolver() {
                         </td>
 
                         <td className="">
-                            <Button variant={isFeedbackInputValid ? "primary" : "secondary"} className="w-100 " disabled={!isFeedbackInputValid} onClick={() => handleNextBtnClick(nextGuess)}>Next</Button>
+                            <Button variant={isFeedbackInputValid ? "primary" : "secondary"} className="w-100 " disabled={!isFeedbackInputValid} onClick={() => handleNextBtnClick(nextGuess)}>下一步</Button>
                         </td>
                     </tr>
                 </tbody>
             </Table>
 
             {/* Reset Button */}
-            <Button variant="primary" className="w-25 mx-auto" onClick={handleResetBtnClick}>Reset</Button>
+            <Button variant="primary" className="w-25 mx-auto" onClick={handleResetBtnClick}>重置</Button>
 
             {/* Log */}
             <section className="history w-75 m-3">
 
-                {log.length >= 1 ? <h5>History</h5> : ''}
+                {log.length >= 1 ? <h5>历史记录</h5> : ''}
 
                 {log.map((text, i) =>
                     <p key={text + i} className="m-0 p-0"> {text}</p>
@@ -181,7 +181,7 @@ export default function GPQSolver() {
             {/* show all guesses / remaining */}
             <Accordion defaultActiveKey="null">
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header>Remaining {`(${allGuess.length - eliminated.size})`}</Accordion.Header>
+                    <Accordion.Header>剩余选项 {`(${allGuess.length - eliminated.size})`}</Accordion.Header>
                     <Accordion.Body>
                         <Table bordered>
                             {/* 256 = 32 row x 8 col */}
@@ -209,7 +209,7 @@ export default function GPQSolver() {
 
             {/* Reference */}
             <div className="mt-3">
-                <h6>References:</h6>
+                <h6>参考:</h6>
                 <p className="ms-3">
                     <a href="https://maplegpq.com/" target="_blank">maplegpq.com</a>
                 </p>

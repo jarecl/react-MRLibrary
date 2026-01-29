@@ -48,14 +48,14 @@ export function OPQSolver() {
         <div className="d-flex flex-column p-3">
             <div className="instruction">
                 {/* <h4 className="text-danger"> Pending to test, use it at your own risk !</h4> */}
-                <h4>APQ stage-2 / OPQ's sealed room solver</h4>
-                <h5>Instructions</h5>
-                <p>Start with "500", click and read info from npc, then submit the feedback here, you will see next guess prepared for you.</p>
+                <h4>APQ 第二阶段 / OPQ 密室求解器</h4>
+                <h5>说明</h5>
+                <p>从 "500" 开始，点击并阅读 NPC 信息，然后在此提交反馈，您将看到下一个猜测。</p>
 
                 {/* Example */}
                 <Accordion defaultActiveKey="null">
                     <Accordion.Item eventKey="0">
-                        <Accordion.Header>E.g.</Accordion.Header>
+                        <Accordion.Header>示例</Accordion.Header>
                         <Accordion.Body>
                             <p className="m-0">OPQ:</p>
                             {/* https://royals.ms/forum/threads/un-official-mapleroyals-library-scottys-version.229606/page-6#post-1535239 */}
@@ -75,7 +75,7 @@ export function OPQSolver() {
             <hr></hr>
 
             <div className="next-guess">
-                <h4>Next guess:</h4>
+                <h4>下一个猜测:</h4>
                 <div className="d-flex justify-content-around">
                     <img src='/images/opq_solver/apq.png' className="w-25"></img>
                     <img src='/images/opq_solver/opq.jpeg' className="w-25"></img>
@@ -87,7 +87,7 @@ export function OPQSolver() {
                     <tbody>
                         <tr>
                             {nextGuess === ''
-                                ? <td colSpan={3} className="text-bg-danger">Oopps, no more remaining, please reset solver and in-game puzzle.</td>
+                                ? <td colSpan={3} className="text-bg-danger">哎呀，没有更多选项了，请重置求解器和游戏内谜题。</td>
                                 : nextGuess.split('').map((num, i) =>
                                     <td className="fw-bolder fs-5" key={num + '-' + i}>
                                         {num}
@@ -100,19 +100,19 @@ export function OPQSolver() {
             </div>
 
             {/* Feedback section */}
-            <h4>Feedback:</h4>
+            <h4>反馈:</h4>
             <div className="d-flex justify-content-center gap-3">
-                <Button variant="primary" onClick={() => handleFeedback(1)}> Same / Correct </Button>
-                <Button variant="primary" onClick={() => handleFeedback(0)}> Different </Button>
+                <Button variant="primary" onClick={() => handleFeedback(1)}> 相同 / 正确 </Button>
+                <Button variant="primary" onClick={() => handleFeedback(0)}> 不同 </Button>
             </div>
 
             {/* Reset Button */}
-            <Button variant="primary" className="mt-5 w-25 mx-auto" onClick={handleResetBtnClick}>Reset</Button>
+            <Button variant="primary" className="mt-5 w-25 mx-auto" onClick={handleResetBtnClick}>重置</Button>
 
             {/* Log */}
             <section className="history w-75 m-3">
 
-                {log.length >= 1 ? <h5>History</h5> : ''}
+                {log.length >= 1 ? <h5>历史记录</h5> : ''}
 
                 {log.map((text, i) =>
                     <p key={text + i} className="m-0 p-0"> {text}</p>
@@ -123,7 +123,7 @@ export function OPQSolver() {
             {/* show all guesses / remaining */}
             <Accordion defaultActiveKey="null">
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header>Remaining {`(${allGuess.length - eliminated.size})`}</Accordion.Header>
+                    <Accordion.Header>剩余选项 {`(${allGuess.length - eliminated.size})`}</Accordion.Header>
                     <Accordion.Body>
                         <Table bordered className="text-center">
                             {/* 21 = 5 row x 5 col */}
@@ -149,7 +149,7 @@ export function OPQSolver() {
 
             {/* Reference */}
             <div className="mt-3">
-                <h6>References:</h6>
+                <h6>参考:</h6>
                 Test it at <Link to='/opq-simulator'>My Simulator</Link>
                 <p className="m-0">
                     <a href="https://royals.ms/forum/threads/un-official-mapleroyals-library-scottys-version.229606/page-6#post-1535239" target="_blank">NPC's response(OPQ)</a>
@@ -228,10 +228,10 @@ export function OPQSimulator() {
 
     return (
         <div className="d-flex flex-column p-3">
-            <h4>APQ stage-2 / OPQ's sealed room simulator</h4>
+            <h4>APQ 第二阶段 / OPQ 密室模拟器</h4>
 
             {/* Attempt Count */}
-            <h5 className="m-3 text-center opacity-50">Attempt : {attemptCount} / 7</h5>
+            <h5 className="m-3 text-center opacity-50">尝试次数 : {attemptCount} / 7</h5>
 
             {/* Playing Screen, user input, button, feedback */}
             {gameStatus === 'playing' && <div className="d-flex flex-column m-0 p-0">
@@ -295,7 +295,7 @@ export function OPQSimulator() {
                 </Table>
 
                 {/* Submit Button */}
-                <Button variant={isInputValid ? "primary" : "secondary"} className="w-25 mx-auto" disabled={!isInputValid} onClick={handleSubmit}>Submit Answer</Button>
+                <Button variant={isInputValid ? "primary" : "secondary"} className="w-25 mx-auto" disabled={!isInputValid} onClick={handleSubmit}>提交答案</Button>
 
                 {/* Game Feedback section */}
                 <div className="npc-feedback my-3 p-3 bg-body-secondary" style={{ height: 100 }}>
@@ -307,24 +307,24 @@ export function OPQSimulator() {
             {/* Lose Screen*/}
             {gameStatus === 'lose' &&
                 <div className="text-center">
-                    <p>The actual answer is : <span className="fw-bold text-danger">{answer}</span></p>
-                    <Button variant="primary" className="w-25 mx-auto my-3" onClick={handlePlayAgain}>Play Again</Button>
+                    <p>实际答案是 : <span className="fw-bold text-danger">{answer}</span></p>
+                    <Button variant="primary" className="w-25 mx-auto my-3" onClick={handlePlayAgain}>再玩一次</Button>
                 </div>
             }
 
             {/* Win Screen*/}
             {gameStatus === 'win' &&
                 <div className="text-center">
-                    <h1 className="text-warning-emphasis">You Won ! </h1>
-                    <p className="text-center">The actual answer is : <span className="fw-bold text-success">{answer}</span></p>
-                    <Button variant="primary" className="w-25 mx-auto my-3" onClick={handlePlayAgain}>Play Again</Button>
+                    <h1 className="text-warning-emphasis">您赢了！ </h1>
+                    <p className="text-center">实际答案是 : <span className="fw-bold text-success">{answer}</span></p>
+                    <Button variant="primary" className="w-25 mx-auto my-3" onClick={handlePlayAgain}>再玩一次</Button>
                 </div>
             }
 
             {/* Show Actual Answer */}
             <Accordion defaultActiveKey="null">
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header>Show Answer</Accordion.Header>
+                    <Accordion.Header>显示答案</Accordion.Header>
                     <Accordion.Body>{answer}</Accordion.Body>
                 </Accordion.Item>
             </Accordion>
@@ -334,7 +334,7 @@ export function OPQSimulator() {
 
             {/* Reference */}
             <section className="mt-3">
-                <h6>References:</h6>
+                <h6>参考:</h6>
                 <p className="ms-3"><Link to='/opq-solver'>My Solver</Link></p>
                 <p className="ms-3">
                     <a href="https://forum.dream.ms/threads/orbis-pq-guide.9872/" target="_blank">dreamMS OPQ guide</a>

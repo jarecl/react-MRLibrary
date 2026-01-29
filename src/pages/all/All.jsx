@@ -10,13 +10,8 @@ import {
     updateSearchResultCount,
     renderImageWithItemIdType,
     renderImageWithMobId,
-    renderImageWithSkillId,
     itemIdToNavUrl,
 } from "./utility.jsx"
-
-import {
-    renderImageWithNPCId
-} from '../npc/utility.jsx'
 
 import { updatePagination } from "../../components/Pagination.jsx"
 import data_mob from "../../../data/data_Mob.json"
@@ -24,8 +19,6 @@ import data_Eqp from "../../../data/data_Eqp.json"
 import data_Consume from "../../../data/data_Consume.json"
 import data_Ins from "../../../data/data_Ins.json"
 import data_Etc from "../../../data/data_Etc.json"
-import data_skill from "../../../data/data_Skill.json"
-import data_NPC from "../../../data/data_NPC.json"
 
 export default function All() {
     const [searchParams] = useSearchParams()
@@ -75,22 +68,6 @@ export default function All() {
                     id,
                     name,
                     type: "etc"
-                }
-            ))
-        Object.entries(data_skill).forEach(([id, { name }]) =>
-            id && name && globalArr.push( //if id and name both exists, push an obj
-                {
-                    id,
-                    name,
-                    type: "skill"
-                }
-            ))
-        Object.entries(data_NPC).forEach(([id, { name }]) =>
-            id && name && globalArr.push( //if id and name both exists, push an obj
-                {
-                    id,
-                    name,
-                    type: "npc"
                 }
             ))
 
@@ -160,10 +137,6 @@ export const renderGlobalList = (filteredGlobalList) => {
         let navUrl = '/error'
         if (type == "monster") {
             navUrl = `/monster/id=${id}`
-        } else if (type == 'skill') {
-            navUrl = `/skill/id=${id}`
-        } else if (type == 'npc') {
-            navUrl = `/npc?page=1&location=all&type=all&search=${id}`
         } else if (["equip", "use", "setup", "etc"].includes(type)) {
             navUrl = itemIdToNavUrl(id)
         }
@@ -174,8 +147,6 @@ export const renderGlobalList = (filteredGlobalList) => {
                     <Link to={navUrl}>
                         {type === "monster" && renderImageWithMobId(id)}
                         {["equip", "use", "setup", "etc"].includes(type) && renderImageWithItemIdType(id, name, type)}
-                        {type === "skill" && renderImageWithSkillId(id)}
-                        {type === "npc" && renderImageWithNPCId(id)}
                     </Link>
                 </td>
                 <td>

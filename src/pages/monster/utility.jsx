@@ -13,8 +13,34 @@ import data_MapMobCount from "../../../data/data_MapMobCount.json"
 import data_MB_Maps from "../../../data/data_MB_Maps.json"
 // 
 import data_Map from "../../../data/data_Map.json"
-// 
-import { findMapCategoryByMapId } from "../map/utility.jsx"
+
+// Helper function to find map category by map ID
+const findMapCategoryByMapId = (mapId) => {
+    const mapData = data_Map[mapId]
+    if (!mapData) return "Unknown"
+    // Map categories in data_Map use lowercase keys like "maple", "victoria", etc.
+    // Convert to display names
+    const categoryMap = {
+        "maple": "Maple Island",
+        "victoria": "Victoria Island",
+        "elnath": "Elnath",
+        "aquaroad": "Aquaroad",
+        "ludus": "Ludus Lake",
+        "ellin": "Ellin Forest",
+        "leafre": "Leafre",
+        "neotokyo": "Neo Tokyo",
+        "mulung": "Mu Lung",
+        "nihal": "Nihal Desert",
+        "masteria": "Masteria",
+        "time": "Temple of Time",
+        "singapore": "Singapore",
+        "malaysia": "Malaysia",
+        "event": "Event",
+        "etc": "Etc"
+    }
+    const category = mapData.mapCategory || "etc"
+    return categoryMap[category] || category
+}
 
 // 
 const data_MobIdImg = Object.fromEntries(data_fixMobImg.map(x => [Object.keys(x), Object.values(x)]))

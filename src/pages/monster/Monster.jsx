@@ -7,7 +7,26 @@ import Table from "react-bootstrap/Table"
 // 
 import { updatePagination } from "../../components/Pagination.jsx"
 import { generateMobLibrary, renderImageWithMobId, filterMobList, updateSearchResultCount } from "./utility.jsx"
-import { mapCategory } from "../map/utility.jsx"
+
+// Map categories for filtering
+const mapCategory = [
+    "Maple Island",
+    "Victoria Island",
+    "Elnath",
+    "Aquaroad",
+    "Ludus Lake",
+    "Ellin Forest",
+    "Leafre",
+    "Neo Tokyo",
+    "Mu Lung",
+    "Nihal Desert",
+    "Masteria",
+    "Temple of Time",
+    "Singapore",
+    "Malaysia",
+    "Event",
+    "Etc"
+]
 
 export default function Monster() {
     const [searchParams] = useSearchParams()
@@ -36,24 +55,24 @@ export default function Monster() {
                         <Table className="text-center" borderless >
                             <thead>
                                 <tr>
-                                    <th className="bg-transparent">Filter</th>
-                                    <th className="bg-transparent">Category</th>
-                                    <th className="bg-transparent">Order By</th>
-                                    <th className="bg-transparent">Sort</th>
+                                    <th className="bg-transparent">筛选</th>
+                                    <th className="bg-transparent">分类</th>
+                                    <th className="bg-transparent">排序方式</th>
+                                    <th className="bg-transparent">顺序</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td className="bg-transparent">
                                         <FormBS.Select aria-label="filter by" data-bs-theme="light" name="filterBy">
-                                            <option value="any">Any</option>
-                                            <option value="monster">Monster</option>
+                                            <option value="any">全部</option>
+                                            <option value="monster">普通怪物</option>
                                             <option value="boss">Boss</option>
                                         </FormBS.Select>
                                     </td>
                                     <td className="bg-transparent">
                                         <FormBS.Select aria-label="category by" data-bs-theme="light" name="categoryBy">
-                                            <option value="any">Any</option>
+                                            <option value="any">全部</option>
                                             {mapCategory.map(mapName =>
                                                 <option key={mapName} value={mapName}>{mapName}</option>
                                             )}
@@ -61,16 +80,16 @@ export default function Monster() {
                                     </td>
                                     <td className="bg-transparent">
                                         <FormBS.Select aria-label="order by" data-bs-theme="light" name="orderBy">
-                                            <option value="id">Id</option>
-                                            <option value="level">Level</option>
-                                            <option value="exp">Exp</option>
-                                            <option value="maxHP">Hp</option>
+                                            <option value="id">ID</option>
+                                            <option value="level">等级</option>
+                                            <option value="exp">经验</option>
+                                            <option value="maxHP">血量</option>
                                         </FormBS.Select>
                                     </td>
                                     <td className="bg-transparent">
                                         <FormBS.Select aria-label="sort by" data-bs-theme="light" name="sortBy">
-                                            <option value="ascending">Ascending</option>
-                                            <option value="descending">Descending</option>
+                                            <option value="ascending">升序</option>
+                                            <option value="descending">降序</option>
                                         </FormBS.Select>
                                     </td>
                                 </tr>
@@ -78,13 +97,13 @@ export default function Monster() {
                         </Table>
                     </div>
 
-                    <div className="col-12 flex-grow-1 d-md-none px-2"><Button onClick={handleAdvancedSearchClick} className="w-100" variant="secondary">Advanced Search</Button></div>
+                    <div className="col-12 flex-grow-1 d-md-none px-2"><Button onClick={handleAdvancedSearchClick} className="w-100" variant="secondary">高级搜索</Button></div>
 
                     <div className="col-lg-6 flex-grow-1">
                         <Table className="text-center my-0" borderless >
                             <thead>
                                 <tr className="d-none d-lg-block">
-                                    <th className="bg-transparent w-100">Name</th>
+                                    <th className="bg-transparent w-100">名称</th>
                                     <th className="bg-transparent"> </th>
                                 </tr>
                             </thead>
@@ -94,13 +113,13 @@ export default function Monster() {
                                         <FormBS.Control
                                             className=""
                                             type="search"
-                                            placeholder=" Search ..."
+                                            placeholder=" 搜索..."
                                             aria-label="Search"
                                             data-bs-theme="light"
                                             name="searchName"
                                         />
                                     </td>
-                                    <td className="bg-transparent"><Button variant="secondary" type="submit" className="w-100" >Search</Button></td>
+                                    <td className="bg-transparent"><Button variant="secondary" type="submit" className="w-100" >搜索</Button></td>
                                 </tr>
                             </tbody>
                         </Table>
@@ -114,11 +133,11 @@ export default function Monster() {
             <Table className="mt-3">
                 <thead>
                     <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Level</th>
-                        <th>Exp</th>
-                        <th>Hp</th>
+                        <th>图片</th>
+                        <th>名称</th>
+                        <th>等级</th>
+                        <th>经验</th>
+                        <th>血量</th>
                     </tr>
                 </thead>
                 <tbody>

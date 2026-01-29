@@ -117,13 +117,13 @@ export default function Equips() {
                         </Table>
                     </div>
 
-                    <div className="col-12 flex-grow-1 d-md-none px-2"><Button onClick={handleAdvancedSearchClick} className="w-100" variant="secondary">Advanced Search</Button></div>
+                    <div className="col-12 flex-grow-1 d-md-none px-2"><Button onClick={handleAdvancedSearchClick} className="w-100" variant="secondary">高级搜索</Button></div>
 
                     <div className="col-lg-6 flex-grow-1">
                         <Table className="text-center my-0" borderless >
                             <thead>
                                 <tr className="d-none d-lg-block">
-                                    <th className="bg-transparent w-100">Name</th>
+                                    <th className="bg-transparent w-100">名称</th>
                                     <th className="bg-transparent"> </th>
                                 </tr>
                             </thead>
@@ -133,13 +133,13 @@ export default function Equips() {
                                         <FormBS.Control
                                             className=""
                                             type="search"
-                                            placeholder=" Search ..."
+                                            placeholder=" 搜索 ..."
                                             aria-label="Search"
                                             data-bs-theme="light"
                                             name="searchName"
                                         />
                                     </td>
-                                    <td className="bg-transparent"><Button variant="secondary" type="submit" className="w-100" >Search</Button></td>
+                                    <td className="bg-transparent"><Button variant="secondary" type="submit" className="w-100" >搜索</Button></td>
                                 </tr>
                             </tbody>
                         </Table>
@@ -157,13 +157,13 @@ export default function Equips() {
             <Table className="mt-3 table-sm text-center">
                 <thead>
                     <tr>
-                        <th>Image</th>
-                        <th className="w-25">Name</th>
-                        {isWeaponPage && <th>Category</th>}
-                        <th>Level</th>
-                        {isWeaponPage && <th>Speed</th>}
-                        {isWeaponPage && <th>Attack</th>}
-                        <th>Slots</th>
+                        <th>图片</th>
+                        <th className="w-25">名称</th>
+                        {isWeaponPage && <th>类别</th>}
+                        <th>等级</th>
+                        {isWeaponPage && <th>速度</th>}
+                        {isWeaponPage && <th>攻击</th>}
+                        <th>卷数</th>
                         {extraColumns.map(itemProp => <th key={itemProp}>{convertItemPropToName(itemProp)}</th>)}
                     </tr>
                 </thead>

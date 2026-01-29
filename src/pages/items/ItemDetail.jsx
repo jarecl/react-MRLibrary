@@ -104,7 +104,7 @@ export default function ItemDetail() {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Sell Price : {numFormatter(itemInfo.price)}</td>
+                                        <td>出售价格 : {numFormatter(itemInfo.price)}</td>
                                     </tr>
                                 </tbody>
                             </Table>
@@ -117,19 +117,19 @@ export default function ItemDetail() {
                         <div className="item-dropped-by-card">
                             <Tabs id="controlled-tab-example" className="mb-3">
                                 {/* Drops Tab */}
-                                <Tab eventKey="Drops" title="Drops">
+                                <Tab eventKey="Drops" title="掉落">
                                     {renderDroppedByMob(itemInfo)}
                                 </Tab>
 
                                 {/* Stats Tab */}
-                                <Tab eventKey="Stats" title="Stats">
+                                <Tab eventKey="Stats" title="属性">
                                     {renderItemStats(itemInfo)}
                                 </Tab>
 
                                 {/* Gacha Tab only shows if have info from data_Gacha.json*/}
                                 {itemInfo.gacha &&
-                                    <Tab eventKey="Gacha" title="Gacha">
-                                        <h5>Gacha Location :</h5>
+                                    <Tab eventKey="Gacha" title="扭蛋">
+                                        <h5>扭蛋地点 :</h5>
                                         <ul>
                                             {itemInfo.gacha.map(mapName => <li key={mapName}>{mapName}</li>)}
                                         </ul>
@@ -138,12 +138,12 @@ export default function ItemDetail() {
 
                                 {/* Craft Tab only shows if have info from data_Crafting.json*/}
                                 {itemInfo.craft &&
-                                    <Tab eventKey="Craft" title="Craft">
+                                    <Tab eventKey="Craft" title="制作">
                                         <ul>
-                                            {itemInfo.craft.isCraftable && <li><p>Can be crafted</p></li>}
+                                            {itemInfo.craft.isCraftable && <li><p>可以制作</p></li>}
                                             {Boolean(itemInfo.craft.isMaterial.length) &&
                                                 <li>
-                                                    <p>As material for : </p>
+                                                    <p>作为材料用于 : </p>
                                                     <ol>
                                                         {itemInfo.craft.isMaterial.map(parentItemName => <li key={parentItemName} className="my-1">
                                                             {parentItemName}
@@ -151,7 +151,7 @@ export default function ItemDetail() {
                                                     </ol>
                                                 </li>}
                                         </ul>
-                                        <Link to={itemNameToCraftLink(itemInfo.name)} className="m-3">Click to see more</Link>
+                                        <Link to={itemNameToCraftLink(itemInfo.name)} className="m-3">点击查看更多</Link>
                                     </Tab>
                                 }
                             </Tabs>
@@ -168,7 +168,7 @@ export default function ItemDetail() {
 const renderDroppedByMob = (itemInfo) => {
     return (
         <>
-            {itemInfo?.droppedBy?.length >= 1 ? <span>Dropped by </span> : <span>Dropped by nothing.</span>}
+            {itemInfo?.droppedBy?.length >= 1 ? <span>掉落自 </span> : <span>无掉落来源。</span>}
             <p></p>
             {
                 itemInfo?.droppedBy?.map(({ id, name }, i) => {
@@ -193,11 +193,11 @@ const renderItemStats = (itemInfo) => {
         <Table bordered hover className="text-center">
             <tbody>
                 <tr>
-                    <td>Name </td>
+                    <td>名称 </td>
                     <td dangerouslySetInnerHTML={{ __html: itemInfo.name }}></td>
                 </tr>
                 <tr>
-                    <td>item id </td>
+                    <td>物品 ID </td>
                     <td>{itemInfo.id} </td>
                 </tr>
                 {keys.map(k =>
